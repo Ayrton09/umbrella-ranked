@@ -26,6 +26,7 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike: Glob
 You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/databases.cfg`.
 
 ### MySQL (Remote storage)
+```
 "ranked_db"
 {
 "driver"            "default"
@@ -35,9 +36,10 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 "pass"              "your-password"
 "port"              "3306"
 }
-
+```
 
 ### SQLite (Local storage)
+```
 "ranked_db"
 {
 "driver"            "sqlite"
