@@ -1,24 +1,23 @@
 # ☂️ Umbrella Ranked System (CS:GO)
 
-A comprehensive, lightweight, and secure ranking system for Counter-Strike: Global Offensive community servers. Built to be spam-proof, visually clean, and highly customizable. It tracks KDR, total playtime, and individual weapon statistics with native multi-language support.
+A complete, lightweight, and secure ranking system for Counter-Strike: Global Offensive community servers. **This is a ranking system based solely on Kills and Deaths — no points, no complex elo, and no "weird things."** It's designed to be clean, fast, and easy for players to understand.
 
 ---
 
 ## ✨ Features
-* **Full Stat Tracking:** Records Kills, Deaths, KDR, Total Playtime (Hours/Days), and individual Weapon statistics.
+* **Full Stat Tracking:** Records Kills, Deaths, KDR, Total Playtime, and individual Weapon statistics.
 * **Native Multi-Language:** Automatically detects and adapts to the player's game language (English, Spanish, Portuguese, Russian, and Chinese).
 * **Dual Database Support:** Works flawlessly with local SQLite or remote MySQL setups.
-* **Anti-Spam Protection:** Built-in command cooldowns to prevent server lag or chat flooding.
+* **Anti-Spam Protection:** Built-in command cooldowns to prevent server lag.
+* **Optimized UI:** Clean, standardized menus and chat colors that work on all CS:GO clients.
 
 ---
 
 ## 📥 Installation
-1. **Download** the latest files from the repository.
-2. **Drag and drop** the `addons` folder into your server's `csgo/` directory.
+1. **Download** the latest files and drop the `addons` folder into your server's `csgo/` directory.
    * `umbrella_ranked.smx` -> `addons/sourcemod/plugins/`
    * `umbrella_ranked.phrases.txt` -> `addons/sourcemod/translations/`
-3. **Restart** your server or change the map. 
-4. The plugin will **auto-generate** its configuration file at `cfg/sourcemod/umbrella_ranked.cfg`.
+2. **Restart** your server. The plugin will auto-generate its configuration file at `cfg/sourcemod/umbrella_ranked.cfg`.
 
 ---
 
@@ -28,20 +27,22 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 ### MySQL (Remote storage)
 "ranked_db"
 {
-    "driver"            "default"
-    "host"              "your-db-host"
-    "database"          "your-db-name"
-    "user"              "your-user"
-    "pass"              "your-password"
-    "port"              "3306"
+"driver"            "default"
+"host"              "your-db-host"
+"database"          "your-db-name"
+"user"              "your-user"
+"pass"              "your-password"
+"port"              "3306"
 }
+
 
 ### SQLite (Local storage)
 "ranked_db"
 {
-    "driver"            "sqlite"
-    "database"          "umbrella_stats"
+"driver"            "sqlite"
+"database"          "umbrella_stats"
 }
+
 
 ---
 
@@ -57,12 +58,12 @@ Adjust these settings in `cfg/sourcemod/umbrella_ranked.cfg`:
 ---
 
 ## 💻 Player Commands
-* `!rank` or `/rank`: View your personal stats and global leaderboard position.
-* `!top`: Opens the Top 50 KDR leaderboard.
-* `!toptime`: Displays the "Hall of Fame" for the most active players.
-* `!topweapons`: Shows rankings for each individual weapon.
+* **!rank** or **/rank**: View your personal stats and global leaderboard position.
+* **!top**: Opens the Top 50 KDR leaderboard.
+* **!toptime**: Displays the "Hall of Fame" for the most active players.
+* **!topweapons**: Shows rankings for each individual weapon.
 
 ---
 
-**Author:** Ayrton09
+**Author:** Ayrton09  
 **Platform:** SourcePawn / SourceMod (CS:GO)
