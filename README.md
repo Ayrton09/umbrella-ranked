@@ -31,4 +31,3 @@ You can tweak the following settings inside `cfg/sourcemod/umbrella_ranked.cfg` 
 * `sm_rank_cooldown` (Def: 3.0) - Cooldown in seconds between commands (Anti-Spam).
 
 ---
-*Developed by Ayrton09*
