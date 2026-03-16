@@ -46,6 +46,7 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 "database"          "umbrella_stats"
 }
 
+
 ## ⚙️ Configurable CVars
 Adjust these settings in `cfg/sourcemod/umbrella_ranked.cfg`:
 
