@@ -24,7 +24,7 @@ public Plugin myinfo = {
 };
 
 public void OnPluginStart() {
-    // Archivo de traducciones
+    //
     LoadTranslations("umbrella_ranked.phrases.txt");
 
     g_cvDbConfig = CreateConVar("sm_rank_db_connection", "ranked_db", "Nombre en databases.cfg");
