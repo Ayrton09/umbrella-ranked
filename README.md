@@ -33,3 +33,22 @@ Add an entry named **"ranked_db"** in your `addons/sourcemod/configs/databases.c
     "driver"            "sqlite"
     "database"          "umbrella_stats"
 }
+
+### Option B: MySQL (Remote)
+```hcl
+"ranked_db"
+{
+    "driver"            "default"
+    "host"              "your-db-host"
+    "database"          "your-db-name"
+    "user"              "your-user"
+    "pass"              "your-password"
+    "port"              "3306"
+}
+
+⚙️ Configurable CVars
+
+CVar,Default,Description
+sm_rank_min_kills,1,Kills needed to be ranked.
+sm_rank_cooldown,3.0,Seconds between command uses.
+sm_rank_top1_sound,...,Sound played when Top #1 player joins.
