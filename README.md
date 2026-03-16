@@ -26,7 +26,7 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike: Glob
 You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/databases.cfg`.
 
 ### MySQL (Remote storage)
-```
+
 "ranked_db"
 {
 "driver"            "default"
@@ -45,7 +45,6 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 "driver"            "sqlite"
 "database"          "umbrella_stats"
 }
-
 
 ## ⚙️ Configurable CVars
 Adjust these settings in `cfg/sourcemod/umbrella_ranked.cfg`:
