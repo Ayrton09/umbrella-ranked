@@ -27,6 +27,7 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 
 ### MySQL (Remote storage)
 
+```
 "ranked_db"
 {
 "driver"            "default"
@@ -39,13 +40,13 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 ```
 
 ### SQLite (Local storage)
+
 ```
 "ranked_db"
 {
 "driver"            "sqlite"
 "database"          "umbrella_stats"
 }
-
 ```
 
 ## ⚙️ Configurable CVars
