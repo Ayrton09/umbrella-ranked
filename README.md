@@ -45,6 +45,7 @@ You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/da
 "driver"            "sqlite"
 "database"          "umbrella_stats"
 }
+
 ---
 
 ## ⚙️ Configurable CVars
