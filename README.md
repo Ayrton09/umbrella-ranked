@@ -52,3 +52,15 @@ CVar	Default	Description
 sm_rank_min_kills	1	Minimum kills required to be ranked and saved.
 sm_rank_cooldown	3.0	Seconds a player must wait between using commands.
 sm_rank_top1_sound	...	Sound path to play when the Top #1 player joins.
+💻 Player Commands
+
+!rank or /rank: View your personal stats and global leaderboard position.
+
+!top: Opens the Top 50 KDR leaderboard.
+
+!toptime: Displays the "Hall of Fame" for the most active players.
+
+!topweapons: Shows rankings for each individual weapon.
+
+Author: Ayrton09
+Platform: SourcePawn / SourceMod (CS:GO)
