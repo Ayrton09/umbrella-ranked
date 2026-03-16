@@ -21,6 +21,8 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike: Glob
     * `umbrella_ranked.phrases.txt` -> `addons/sourcemod/translations/`
 3.  **Restart** your server or change map. The plugin will **auto-generate** its configuration at `cfg/sourcemod/umbrella_ranked.cfg`.
 
+⚙️ Configurable CVarsAdjust these settings in cfg/sourcemod/umbrella_ranked.cfg:CVarDefaultDescriptionsm_rank_min_kills1Minimum kills required to be ranked and saved.sm_rank_cooldown3.0Seconds a player must wait between using commands.sm_rank_top1_sound...Sound path to play when the Top #1 player joins.
+
 ---
 
 ## 🗄️ Database Setup
@@ -45,10 +47,3 @@ Add an entry named **"ranked_db"** in your `addons/sourcemod/configs/databases.c
     "pass"              "your-password"
     "port"              "3306"
 }
-
-⚙️ Configurable CVars
-
-CVar,Default,Description
-sm_rank_min_kills,1,Kills needed to be ranked.
-sm_rank_cooldown,3.0,Seconds between command uses.
-sm_rank_top1_sound,...,Sound played when Top #1 player joins.
