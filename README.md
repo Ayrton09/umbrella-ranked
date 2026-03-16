@@ -9,7 +9,6 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike: Glob
 * **Native Multi-Language:** Automatically detects and adapts to the player's game language (English, Spanish, Portuguese, Russian, and Chinese).
 * **Dual Database Support:** Works flawlessly with local SQLite or remote MySQL setups.
 * **Anti-Spam Protection:** Built-in command cooldowns to prevent server lag or chat flooding.
-* **Optimized UI:** Clean, standardized menus and chat colors that work on all CS:GO clients.
 
 ---
 
