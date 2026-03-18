@@ -65,5 +65,17 @@ SQLite
     "driver"    "sqlite"
     "database"  "umbrella_stats"
 }
+</details>
+
+⚙️ CVars
+<details> <summary>Click to expand</summary>
+CVar	Default	Description
+sm_rank_min_kills	1	Minimum kills required
+sm_rank_cooldown	3.0	Command delay
+sm_rank_top1_sound	...	Top #1 sound
+sm_rank_autosave_interval	120.0	Autosave interval
+</details>
+
+
 
 
