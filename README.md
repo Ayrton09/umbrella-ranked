@@ -73,7 +73,6 @@ addons/sourcemod/configs/databases.cfg
 </pre>
 
 </details>
----
 
 ## ⚙️ CVars
 
