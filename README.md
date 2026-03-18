@@ -30,12 +30,12 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 
 1. Download the latest files  
 2. Place files:
-3. addons/sourcemod/plugins/umbrella_ranked.smx
-4. addons/sourcemod/translations/umbrella_ranked.phrases.txt
-5. Restart server or change map  
-6. Config auto-generated at: cfg/sourcemod/umbrella_ranked.cfg
+   - `addons/sourcemod/plugins/umbrella_ranked.smx`
+   - `addons/sourcemod/translations/umbrella_ranked.phrases.txt`
+3. Restart server or change map  
+4. Config auto-generated at: `cfg/sourcemod/umbrella_ranked.cfg`
 
-</details> ```
+</details>
 
 ---
 
@@ -44,10 +44,10 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 <details>
 <summary>Click to expand</summary>
 
-Add `"ranked_db"` in: addons/sourcemod/configs/databases.cfg
-
+Add `"ranked_db"` in: `addons/sourcemod/configs/databases.cfg`
 
 ### MySQL
+
 ```cfg
 "ranked_db"
 {
@@ -59,31 +59,38 @@ Add `"ranked_db"` in: addons/sourcemod/configs/databases.cfg
     "port"      "3306"
 }
 
-### SQLite
-
-```cfg
+SQLite
 "ranked_db"
 {
     "driver"    "sqlite"
     "database"  "umbrella_stats"
 }
-</details> ```
+</details>
+⚙️ CVars
+<details> <summary>Click to expand</summary>
+CVar	Default	Description
+sm_rank_min_kills	1	Minimum kills required
+sm_rank_cooldown	3.0	Command delay
+sm_rank_top1_sound	...	Top #1 sound
+sm_rank_autosave_interval	120.0	Autosave interval
+</details>
+💻 Commands
+<details> <summary>Click to expand</summary>
 
-## ⚙️ CVars
+!rank → Your stats
 
-<details>
-<summary>Click to expand</summary>
+!top → Top players
 
-<br>
+!toptime → Most active players
 
-| CVar | Default | Description |
-|------|---------|-------------|
-| `sm_rank_min_kills` | `1` | Minimum kills required |
-| `sm_rank_cooldown` | `3.0` | Command delay |
-| `sm_rank_top1_sound` | `...` | Top #1 sound |
-| `sm_rank_autosave_interval` | `120.0` | Autosave interval |
+!topweapons → Weapon rankings
 
 </details>
+
+👤 Author
+
+Ayrton09
+SourcePawn / SourceMod (CS:GO / CS:S)
 
 
 
