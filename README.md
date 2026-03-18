@@ -65,7 +65,7 @@ SQLite
     "driver"    "sqlite"
     "database"  "umbrella_stats"
 }
-</details>
+</details> ```
 
 ---
 
