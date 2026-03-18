@@ -1,5 +1,15 @@
 # ☂️ Umbrella Ranked System (CS:GO / CS:S)
 
+![Version](https://img.shields.io/badge/version-2.4.2-blue)
+![Game](https://img.shields.io/badge/game-CS%3AGO%20%2F%20CS%3AS-orange)
+![Platform](https://img.shields.io/badge/platform-SourceMod-green)
+![Language](https://img.shields.io/badge/languages-EN%20ES%20PT%20RU%20CH-purple)
+![Database](https://img.shields.io/badge/database-MySQL%20%2F%20SQLite-lightgrey)
+
+> Lightweight • Multi-language • MySQL/SQLite • CS:GO & CS:S
+
+---
+
 | Section | Content |
 |--------|--------|
 | **Description** | A comprehensive, lightweight, and secure ranking system for Counter-Strike community servers. **This is a ranking system based solely on Kills and Deaths — no points, no complex elo, and no "weird things."** It's designed to be clean, fast, and easy for players to understand. |
