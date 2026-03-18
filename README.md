@@ -33,4 +33,5 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 3. addons/sourcemod/plugins/umbrella_ranked.smx
 4. addons/sourcemod/translations/umbrella_ranked.phrases.txt
 3. Restart server or change map  
-Config auto-generated at: cfg/sourcemod/umbrella_ranked.cfg
+Config auto-generated at:
+cfg/sourcemod/umbrella_ranked.cfg
