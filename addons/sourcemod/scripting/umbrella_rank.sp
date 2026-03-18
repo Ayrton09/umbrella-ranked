@@ -33,7 +33,7 @@ public Plugin myinfo =
     name = "Umbrella Ranked System",
     author = "Ayrton09",
     description = "Ranking System: KDR, Time & Weapons (CS:GO/CS:S)",
-    version = "2.4.2",
+    version = "2.4.4",
     url = ""
 };
 
@@ -95,7 +95,12 @@ public void OnMapEnd()
 public void OnPluginEnd()
 {
     SaveAllClientsData(true);
-    g_hAutoSaveTimer = null;
+
+    if (g_hAutoSaveTimer != null)
+    {
+        delete g_hAutoSaveTimer;
+        g_hAutoSaveTimer = null;
+    }
 }
 
 // =============================================================================
@@ -469,7 +474,7 @@ void StartAutoSaveTimer()
         return;
     }
 
-    g_hAutoSaveTimer = CreateTimer(interval, Timer_AutoSave, _, TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE);
+    g_hAutoSaveTimer = CreateTimer(interval, Timer_AutoSave, _, TIMER_REPEAT);
 }
 
 public void OnAutoSaveCvarChanged(ConVar convar, const char[] oldValue, const char[] newValue)
