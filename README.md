@@ -35,7 +35,7 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 5. Restart server or change map  
 6. Config auto-generated at: cfg/sourcemod/umbrella_ranked.cfg
 
-</details>
+</details> ```
 
 ---
 
