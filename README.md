@@ -59,16 +59,15 @@ Add `"ranked_db"` in: addons/sourcemod/configs/databases.cfg
     "port"      "3306"
 }
 
-SQLite
+### SQLite
+
+```cfg
 "ranked_db"
 {
     "driver"    "sqlite"
     "database"  "umbrella_stats"
 }
-
 </details> ```
-
----
 
 ## ⚙️ CVars
 
