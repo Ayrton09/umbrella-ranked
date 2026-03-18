@@ -29,5 +29,6 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 <summary>Click to expand</summary>
 
 1. Download the latest files  
-2. Place files: addons/sourcemod/plugins/umbrella_ranked.smx
+2. Place files:
+3. addons/sourcemod/plugins/umbrella_ranked.smx
 addons/sourcemod/translations/umbrella_ranked.phrases.txt
