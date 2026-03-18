@@ -45,13 +45,13 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 <details>
 <summary>Click to expand</summary>
 
-Add `"ranked_db"` in:  
-`addons/sourcemod/configs/databases.cfg`
+Add "ranked_db" in:  
+addons/sourcemod/configs/databases.cfg
 
 <br>
 
 **MySQL**
-```cfg
+<pre>
 "ranked_db"
 {
     "driver"    "default"
@@ -61,15 +61,18 @@ Add `"ranked_db"` in:
     "pass"      "your-password"
     "port"      "3306"
 }
+</pre>
 
+**SQLite**
+<pre>
 "ranked_db"
 {
     "driver"    "sqlite"
     "database"  "umbrella_stats"
 }
+</pre>
 
 </details>
-
 ---
 
 ## ⚙️ CVars
