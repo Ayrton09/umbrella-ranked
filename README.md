@@ -31,10 +31,10 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 
 1. Download the latest files  
 2. Place files:  
-   - `addons/sourcemod/plugins/umbrella_ranked.smx`  
-   - `addons/sourcemod/translations/umbrella_ranked.phrases.txt`  
+   - addons/sourcemod/plugins/umbrella_ranked.smx  
+   - addons/sourcemod/translations/umbrella_ranked.phrases.txt  
 3. Restart server or change map  
-4. Config auto-generated at: `cfg/sourcemod/umbrella_ranked.cfg`
+4. Config auto-generated at: cfg/sourcemod/umbrella_ranked.cfg  
 
 </details>
 
@@ -45,11 +45,9 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 <details>
 <summary>Click to expand</summary>
 
-Add `"ranked_db"` in: `addons/sourcemod/configs/databases.cfg`
+Add "ranked_db" in: addons/sourcemod/configs/databases.cfg
 
 ### MySQL
-
-```cfg
 "ranked_db"
 {
     "driver"    "default"
@@ -59,11 +57,49 @@ Add `"ranked_db"` in: `addons/sourcemod/configs/databases.cfg`
     "pass"      "your-password"
     "port"      "3306"
 }
-SQLite
+
+### SQLite
 "ranked_db"
 {
     "driver"    "sqlite"
     "database"  "umbrella_stats"
 }
+
 </details>
 
+---
+
+## ⚙️ CVars
+
+<details>
+<summary>Click to expand</summary>
+
+| CVar | Default | Description |
+|------|---------|-------------|
+| sm_rank_min_kills | 1 | Minimum kills required |
+| sm_rank_cooldown | 3.0 | Command delay |
+| sm_rank_top1_sound | ... | Top #1 sound |
+| sm_rank_autosave_interval | 120.0 | Autosave interval |
+
+</details>
+
+---
+
+## 💻 Commands
+
+<details>
+<summary>Click to expand</summary>
+
+- !rank → Your stats  
+- !top → Top players  
+- !toptime → Most active players  
+- !topweapons → Weapon rankings  
+
+</details>
+
+---
+
+## 👤 Author
+
+Ayrton09  
+SourcePawn / SourceMod (CS:GO / CS:S)
