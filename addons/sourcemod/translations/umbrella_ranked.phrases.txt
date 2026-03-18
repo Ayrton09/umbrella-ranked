@@ -2,92 +2,103 @@
 {
     "Rank Message"
     {
-        "en"            " {orange}Position: {green}#%d {default}| {blue}Kills: %d {default}| {red}Deaths: %d {default}| {olive}KDR: %.2f {default}| {grey}Time: %s"
-        "es"            " {orange}Posición: {green}#%d {default}| {blue}Bajas: %d {default}| {red}Muertes: %d {default}| {olive}KDR: %.2f {default}| {grey}Tiempo: %s"
-        "pt"            " {orange}Posição: {green}#%d {default}| {blue}Vítimas: %d {default}| {red}Mortes: %d {default}| {olive}KDR: %.2f {default}| {grey}Tempo: %s"
-        "ru"            " {orange}Позиция: {green}#%d {default}| {blue}Убийств: %d {default}| {red}Смертей: %d {default}| {olive}У/С: %.2f {default}| {grey}Время: %s"
-        "chi"           " {orange}排名: {green}#%d {default}| {blue}击杀: %d {default}| {red}死亡: %d {default}| {olive}KDR: %.2f {default}| {grey}时间: %s"
+        "en"            "{orange}Position: {green}#%d {default}| {lightgreen}Kills: %d {default}| {lightgreen}Deaths: %d {default}| {olive}KDR: %.2f {default}| Time: %s"
+        "es"            "{orange}Posición: {green}#%d {default}| {lightgreen}Bajas: %d {default}| {lightgreen}Muertes: %d {default}| {olive}KDR: %.2f {default}| Tiempo: %s"
+        "pt"            "{orange}Posição: {green}#%d {default}| {lightgreen}Vítimas: %d {default}| {lightgreen}Mortes: %d {default}| {olive}KDR: %.2f {default}| Tempo: %s"
+        "ru"            "{orange}Позиция: {green}#%d {default}| {lightgreen}Убийств: %d {default}| {lightgreen}Смертей: %d {default}| {olive}У/С: %.2f {default}| Время: %s"
+        "chi"           "{orange}排名: {green}#%d {default}| {lightgreen}击杀: %d {default}| {lightgreen}死亡: %d {default}| {olive}KDR: %.2f {default}| 时间: %s"
     }
+
     "Not Ranked"
     {
-        "en"            " {orange}Position: {grey}Unranked {default}| {blue}Kills: %d {default}| {red}Deaths: %d {default}| {olive}KDR: %.2f {default}| {grey}Time: %s"
-        "es"            " {orange}Posición: {grey}No clasificado {default}| {blue}Bajas: %d {default}| {red}Muertes: %d {default}| {olive}KDR: %.2f {default}| {grey}Tiempo: %s"
-        "pt"            " {orange}Posição: {grey}Sem Classificação {default}| {blue}Vítimas: %d {default}| {red}Mortes: %d {default}| {olive}KDR: %.2f {default}| {grey}Tempo: %s"
-        "ru"            " {orange}Позиция: {grey}Без ранга {default}| {blue}Убийств: %d {default}| {red}Смертей: %d {default}| {olive}У/С: %.2f {default}| {grey}Время: %s"
-        "chi"           " {orange}排名: {grey}未定级 {default}| {blue}击杀: %d {default}| {red}死亡: %d {default}| {olive}KDR: %.2f {default}| {grey}时间: %s"
+        "en"            "{orange}Position: {default}Unranked {default}| {lightgreen}Kills: %d {default}| {lightgreen}Deaths: %d {default}| {olive}KDR: %.2f {default}| Time: %s"
+        "es"            "{orange}Posición: {default}Sin Rango {default}| {lightgreen}Bajas: %d {default}| {lightgreen}Muertes: %d {default}| {olive}KDR: %.2f {default}| Tiempo: %s"
+        "pt"            "{orange}Posição: {default}Sem Rank {default}| {lightgreen}Vítimas: %d {default}| {lightgreen}Mortes: %d {default}| {olive}KDR: %.2f {default}| Tempo: %s"
+        "ru"            "{orange}Позиция: {default}Без ранга {default}| {lightgreen}Убийств: %d {default}| {lightgreen}Смертей: %d {default}| {olive}У/С: %.2f {default}| Время: %s"
+        "chi"           "{orange}排名: {default}未排名 {default}| {lightgreen}击杀: %d {default}| {lightgreen}死亡: %d {default}| {olive}KDR: %.2f {default}| 时间: %s"
     }
-    "Top Title"
-    {
-        "en"            "Top KDR Players\n "
-        "es"            "Top Jugadores por KDR\n "
-        "pt"            "Top Jogadores por KDR\n "
-        "ru"            "Топ игроков по У/С\n "
-        "chi"           "KDR 玩家排名\n "
-    }
+
     "Top1 Announce"
     {
-        "en"            " {darkred}★ {green}The Top #1 player has joined: {lightred}%s"
-        "es"            " {darkred}★ {green}El mejor jugador (Top #1) ha entrado: {lightred}%s"
-        "pt"            " {darkred}★ {green}O melhor jogador (Top #1) entrou: {lightred}%s"
-        "ru"            " {darkred}★ {green}Лучший игрок (Топ #1) зашел: {lightred}%s"
-        "chi"           " {darkred}★ {green}排名第一的玩家已加入: {lightred}%s"
+        "en"            "{green}Top #1 {default}player {purple}%s {default}has joined the server!"
+        "es"            "¡{green}Top #1 {default}{purple}%s {default}entró al servidor!"
+        "pt"            "{green}Top #1 {default}{purple}%s {default}entrou no servidor!"
+        "ru"            "{green}Топ #1 {default}игрок {purple}%s {default}зашел на сервер!"
+        "chi"           "{green}Top #1 {default}玩家 {purple}%s {default}加入了服务器！"
     }
+
     "Top5 Announce"
     {
-        "en"            " {blue}» {green}A Top 5 player has joined: {blue}%s {default}(Ranked {green}#%d{default})"
-        "es"            " {blue}» {green}Un jugador del Top 5 ha entrado: {blue}%s {default}(Puesto {green}#%d{default})"
-        "pt"            " {blue}» {green}Um jogador do Top 5 entrou: {blue}%s {default}(Posição {green}#%d{default})"
-        "ru"            " {blue}» {green}Игрок из Топ 5 зашел: {blue}%s {default}(Позиция {green}#%d{default})"
-        "chi"           " {blue}» {green}前五名玩家已加入: {blue}%s {default}(排名 {green}#%d{default})"
+        "en"            "{green}Top #%d {default}player {purple}%s {default}has joined!"
+        "es"            "¡{green}Top #%d {default}{purple}%s {default}entró al servidor!"
+        "pt"            "{green}Top #%d {default}{purple}%s {default}entrou no servidor!"
+        "ru"            "{green}Топ #%d {default}игрок {purple}%s {default}зашел на сервер!"
+        "chi"           "{green}Top #%d {default}玩家 {purple}%s {default}加入了服务器！"
     }
-    "Weapon Menu Title"
+
+    "Cooldown Message"
     {
-        "en"            "Select a Weapon Top:\n "
-        "es"            "Selecciona un Top de Arma:\n "
-        "pt"            "Selecione um Top de Arma:\n "
-        "ru"            "Выберите Топ оружия:\n "
-        "chi"           "选择武器排名:\n "
+        "en"            "{orange}Please wait {green}%.1f {default}seconds."
+        "es"            "{orange}Por favor espera {green}%.1f {default}segundos."
+        "pt"            "{orange}Por favor, aguarde {green}%.1f {default}segundos."
+        "ru"            "{orange}Пожалуйста, подождите {green}%.1f {default}секунд."
+        "chi"           "{orange}请等待 {green}%.1f {default}秒。"
     }
-    "Top Weapon Title"
+
+    "Rank Disabled"
     {
-        "en"            "*** Hall of Fame: %s ***\n "
-        "es"            "*** Salón de la Fama: %s ***\n "
-        "pt"            "*** Hall da Fama: %s ***\n "
-        "ru"            "*** Зал Славы: %s ***\n "
-        "chi"           "*** 名人堂: %s ***\n "
+        "en"            "{orange}The ranking system is disabled on this map."
+        "es"            "{orange}El sistema de rank está desactivado en este mapa."
+        "pt"            "{orange}O sistema de rank está desativado neste mapa."
+        "ru"            "{orange}Система рангов отключена на этой карте."
+        "chi"           "{orange}此地图的排名系统已禁用。"
     }
-    "Top Time Title"
+
+    "Data Loading"
     {
-        "en"            "*** Hall of Fame: Most Active ***\n "
-        "es"            "*** Salón de la Fama: Más Activos ***\n "
-        "pt"            "*** Hall da Fama: Mais Ativos ***\n "
-        "ru"            "*** Зал Славы: Самые активные ***\n "
-        "chi"           "*** 名人堂: 最活跃 ***\n "
+        "en"            "{orange}Your rank data is still loading. Please try again in a moment."
+        "es"            "{orange}Tus datos de rank todavía se están cargando. Probá de nuevo en un momento."
+        "pt"            "{orange}Seus dados de rank ainda estão carregando. Tente novamente em instantes."
+        "ru"            "{orange}Ваши данные ранга все еще загружаются. Попробуйте снова через мгновение."
+        "chi"           "{orange}你的排名数据仍在加载中，请稍后再试。"
     }
-    "Time Format"
-    {
-        "en"            "%d h %d m"
-        "es"            "%d h %d m"
-        "pt"            "%d h %d m"
-        "ru"            "%d ч %d м"
-        "chi"           "%d 小时 %d 分"
-    }
+
     "Time Format Days"
     {
-        "en"            "%d d %d h %d m"
-        "es"            "%d d %d h %d m"
-        "pt"            "%d d %d h %d m"
-        "ru"            "%d д %d ч %d м"
-        "chi"           "%d 天 %d 小时 %d 分"
+        "en"            "%dd %dh %dm"
+        "es"            "%dd %dh %dm"
+        "pt"            "%dd %dh %dm"
+        "ru"            "%dд %dч %dм"
+        "chi"           "%d天 %d小时 %d分钟"
     }
+
+    "Time Format"
+    {
+        "en"            "%dh %dm"
+        "es"            "%dh %dm"
+        "pt"            "%dh %dm"
+        "ru"            "%dч %dм"
+        "chi"           "%d小时 %d分钟"
+    }
+
+    "Top Time Title"
+    {
+        "en"            "★ Top Active Players ★"
+        "es"            "★ Jugadores Más Activos ★"
+        "pt"            "★ Jogadores Mais Ativos ★"
+        "ru"            "★ Самые активные игроки ★"
+        "chi"           "★ 最活跃玩家 ★"
+    }
+
     "Time Line First"
     {
         "en"            "[TOP 1] %s -> %s"
         "es"            "[TOP 1] %s -> %s"
         "pt"            "[TOP 1] %s -> %s"
-        "ru"            "[TOP 1] %s -> %s"
-        "chi"           "[TOP 1] %s -> %s"
+        "ru"            "[ТОП 1] %s -> %s"
+        "chi"           "[第一名] %s -> %s"
     }
+
     "Time Line Rest"
     {
         "en"            "#%d %s -> %s"
@@ -96,14 +107,61 @@
         "ru"            "#%d %s -> %s"
         "chi"           "#%d %s -> %s"
     }
+
+    "Top Title"
+    {
+        "en"            "★ Top Players ★"
+        "es"            "★ Mejores Jugadores ★"
+        "pt"            "★ Melhores Jogadores ★"
+        "ru"            "★ Лучшие игроки ★"
+        "chi"           "★ 顶级玩家 ★"
+    }
+
+    "Top Line First"
+    {
+        "en"            "[TOP 1] %s -> %d Kills | KDR: %.2f"
+        "es"            "[TOP 1] %s -> %d Bajas | KDR: %.2f"
+        "pt"            "[TOP 1] %s -> %d Vítimas | KDR: %.2f"
+        "ru"            "[ТОП 1] %s -> %d Убийств | У/С: %.2f"
+        "chi"           "[第一名] %s -> %d 击杀 | KDR: %.2f"
+    }
+
+    "Top Line Rest"
+    {
+        "en"            "#%d %s -> %d Kills | KDR: %.2f"
+        "es"            "#%d %s -> %d Bajas | KDR: %.2f"
+        "pt"            "#%d %s -> %d Vítimas | KDR: %.2f"
+        "ru"            "#%d %s -> %d Убийств | У/С: %.2f"
+        "chi"           "#%d %s -> %d 击杀 | KDR: %.2f"
+    }
+
+    "Weapon Menu Title"
+    {
+        "en"            "★ Weapon Ranking Menu ★"
+        "es"            "★ Menú de Ranking de Armas ★"
+        "pt"            "★ Menu de Ranking de Armas ★"
+        "ru"            "★ Меню рейтинга оружия ★"
+        "chi"           "★ 武器排名菜单 ★"
+    }
+
+    "Top Weapon Title"
+    {
+        "en"            "★ Top: %s ★"
+        "es"            "★ Top: %s ★"
+        "pt"            "★ Top: %s ★"
+        "ru"            "★ Топ: %s ★"
+        "chi"           "★ 排名: %s ★"
+    }
+
     "Weapon Line First"
     {
         "en"            "[TOP 1] %s -> %d Kills"
         "es"            "[TOP 1] %s -> %d Bajas"
         "pt"            "[TOP 1] %s -> %d Vítimas"
-        "ru"            "[TOP 1] %s -> %d Убийств"
-        "chi"           "[TOP 1] %s -> %d 击杀"
+        "ru"            "[ТОП 1] %s -> %d Убийств"
+        "chi"           "[第一名] %s -> %d 击杀"
     }
+
     "Weapon Line Rest"
     {
         "en"            "#%d %s -> %d Kills"
@@ -111,21 +169,5 @@
         "pt"            "#%d %s -> %d Vítimas"
         "ru"            "#%d %s -> %d Убийств"
         "chi"           "#%d %s -> %d 击杀"
-    }
-    "Rank Disabled"
-    {
-        "en"            " {red}The ranking system is disabled on this map."
-        "es"            " {red}El sistema de rank está desactivado en este mapa."
-        "pt"            " {red}O sistema de rank está desativado neste mapa."
-        "ru"            " {red}Система рангов отключена на этой карте."
-        "chi"           " {red}此地图的排名系统已禁用。"
-    }
-    "Cooldown Message"
-    {
-        "en"            " {red}Please wait %.1f seconds before using this command again."
-        "es"            " {red}Por favor, espera %.1f segundos antes de usar este comando."
-        "pt"            " {red}Por favor, aguarde %.1f segundos antes de usar este comando."
-        "ru"            " {red}Подождите %.1f секунд перед повторным использованием команды."
-        "chi"           " {red}请等待 %.1f 秒后再使用此命令。"
     }
 }
