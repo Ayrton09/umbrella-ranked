@@ -1,72 +1,13 @@
-# ☂️ Umbrella Ranked System (CS:GO)
+# ☂️ Umbrella Ranked System (CS:GO / CS:S)
 
-A comprehensive, lightweight, and secure ranking system for Counter-Strike: Global Offensive community servers. **This is a ranking system based solely on Kills and Deaths — no points, no complex elo, and no "weird things."** It's designed to be clean, fast, and easy for players to understand.
-
----
-
-## ✨ Features
-* **Full Stat Tracking:** Records Kills, Deaths, KDR, Total Playtime (Hours/Days), and individual Weapon statistics.
-* **Native Multi-Language:** Automatically detects and adapts to the player's game language (English, Spanish, Portuguese, Russian, and Chinese).
-* **Dual Database Support:** Works flawlessly with local SQLite or remote MySQL setups.
-* **Anti-Spam Protection:** Built-in command cooldowns to prevent server lag or chat flooding.
-
----
-
-## 📥 Installation
-1. **Download** the latest files from the repository.
-2. **Drag and drop** the `addons` folder into your server's `csgo/` directory.
-   * `umbrella_ranked.smx` -> `addons/sourcemod/plugins/`
-   * `umbrella_ranked.phrases.txt` -> `addons/sourcemod/translations/`
-3. **Restart** your server or change the map. 
-4. The plugin will **auto-generate** its configuration file at `cfg/sourcemod/umbrella_ranked.cfg`.
-
----
-
-## 🗄️ Database Setup
-You must add an entry named **"ranked_db"** in your `addons/sourcemod/configs/databases.cfg`.
-
-### MySQL (Remote storage)
-
-```
-"ranked_db"
-{
-"driver"            "default"
-"host"              "your-db-host"
-"database"          "your-db-name"
-"user"              "your-user"
-"pass"              "your-password"
-"port"              "3306"
-}
-```
-
-### SQLite (Local storage)
-
-```
-"ranked_db"
-{
-"driver"            "sqlite"
-"database"          "umbrella_stats"
-}
-```
-
-## ⚙️ Configurable CVars
-Adjust these settings in `cfg/sourcemod/umbrella_ranked.cfg`:
-
-| CVar | Default | Description |
-| :--- | :--- | :--- |
-| `sm_rank_min_kills` | 1 | Minimum kills required to be ranked and saved. |
-| `sm_rank_cooldown` | 3.0 | Seconds a player must wait between using commands. |
-| `sm_rank_top1_sound` | ... | Sound path to play when the Top #1 player joins. |
-
----
-
-## 💻 Player Commands
-* **!rank** or **/rank**: View your personal stats and global leaderboard position.
-* **!top**: Opens the Top 50 KDR leaderboard.
-* **!toptime**: Displays the "Hall of Fame" for the most active players.
-* **!topweapons**: Shows rankings for each individual weapon.
-
----
-
-**Author:** Ayrton09
-**Platform:** SourcePawn / SourceMod (CS:GO)
+| Section | Content |
+|--------|--------|
+| **Description** | A comprehensive, lightweight, and secure ranking system for Counter-Strike community servers. This is a ranking system based solely on **Kills and Deaths** — no points, no complex elo, and no "weird things." It's designed to be clean, fast, and easy for players to understand. |
+| **Features** | ✨ **Features**<br><br>• Full Stat Tracking: Records Kills, Deaths, KDR, Total Playtime (Hours/Days), and individual Weapon statistics.<br>• Native Multi-Language: Automatically detects and adapts to the player's game language (English, Spanish, Portuguese, Russian, and Chinese).<br>• Dual Database Support: Works flawlessly with local SQLite or remote MySQL setups.<br>• Anti-Spam Protection: Built-in command cooldowns to prevent server lag or chat flooding.<br>• Autosave System: Prevents data loss on crashes or unexpected shutdowns.<br>• Fully Translation-Based: No hardcoded text, everything handled via phrases.<br>• Colored Chat: Uses MultiColors for clean and readable messages.<br>• Cross-Game Support: Compatible with CS:GO and CS:S. |
+| **Installation** | 📥 **Installation**<br><br>1. Download the latest files from the repository.<br>2. Drag and drop the addons folder into your server's csgo/ directory.<br>3. Place files:<br>• umbrella_ranked.smx → addons/sourcemod/plugins/<br>• umbrella_ranked.phrases.txt → addons/sourcemod/translations/<br>4. Restart your server or change the map.<br><br>The plugin will auto-generate its configuration file at:<br>cfg/sourcemod/umbrella_ranked.cfg |
+| **Requirements** | 🧩 **Requirements**<br><br>• MultiColors → https://forums.alliedmods.net/showthread.php?t=247770 |
+| **Database Setup** | 🗄️ **Database Setup**<br><br>You must add an entry named **"ranked_db"** in:<br>addons/sourcemod/configs/databases.cfg<br><br>**MySQL (Remote storage)**<br>```"ranked_db" { "driver" "default" "host" "your-db-host" "database" "your-db-name" "user" "your-user" "pass" "your-password" "port" "3306" }```<br><br>**SQLite (Local storage)**<br>```"ranked_db" { "driver" "sqlite" "database" "umbrella_stats" }``` |
+| **CVars** | ⚙️ **Configurable CVars**<br><br>sm_rank_min_kills → 1 → Minimum kills required to be ranked and saved.<br>sm_rank_cooldown → 3.0 → Seconds between command uses.<br>sm_rank_top1_sound → Sound path when Top #1 joins.<br>sm_rank_autosave_interval → 120.0 → Autosave interval (0 = disabled). |
+| **Commands** | 💻 **Player Commands**<br><br>!rank / /rank → View your stats and global position.<br>!top → Opens the Top 50 KDR leaderboard.<br>!toptime → Displays the most active players.<br>!topweapons → Shows rankings per weapon. |
+| **Changelog** | 🔹 **Changelog v2.4.2**<br><br>• Added CS:S support<br>• Fixed MultiColors crash<br>• Fixed autosave timer issue<br>• Improved data saving reliability<br>• Improved name sanitization<br>• Removed hardcoded text (full translation system)<br>• General stability improvements |
+| **Compatibility** | 💾 **Compatibility**<br><br>• No database changes required<br>• Fully backward compatible |
