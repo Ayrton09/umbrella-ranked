@@ -63,7 +63,7 @@ Add `"ranked_db"` in:
 }
 
 SQLite
-
+```cfg
 "ranked_db"
 {
     "driver"    "sqlite"
