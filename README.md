@@ -35,3 +35,56 @@ A comprehensive, lightweight, and secure ranking system for Counter-Strike commu
 5. Restart server or change map  
 6. Config auto-generated at: cfg/sourcemod/umbrella_ranked.cfg
 
+</details>
+
+---
+
+## 🗄️ Database Setup
+
+<details>
+<summary>Click to expand</summary>
+
+Add `"ranked_db"` in: addons/sourcemod/configs/databases.cfg
+
+
+### MySQL
+```cfg
+"ranked_db"
+{
+    "driver"    "default"
+    "host"      "your-db-host"
+    "database"  "your-db-name"
+    "user"      "your-user"
+    "pass"      "your-password"
+    "port"      "3306"
+}
+
+SQLite
+"ranked_db"
+{
+    "driver"    "sqlite"
+    "database"  "umbrella_stats"
+}
+</details>
+
+⚙️ CVars
+<details> <summary>Click to expand</summary>
+CVar	Default	Description
+sm_rank_min_kills	1	Minimum kills required
+sm_rank_cooldown	3.0	Command delay
+sm_rank_top1_sound	...	Top #1 sound
+sm_rank_autosave_interval	120.0	Autosave interval
+</details>
+💻 Commands
+<details> <summary>Click to expand</summary>
+
+!rank → Your stats
+
+!top → Top players
+
+!toptime → Most active players
+
+!topweapons → Weapon rankings
+
+</details>
+
