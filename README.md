@@ -67,6 +67,8 @@ SQLite
 }
 </details>
 
+---
+
 ⚙️ CVars
 <details> <summary>Click to expand</summary>
 CVar	Default	Description
