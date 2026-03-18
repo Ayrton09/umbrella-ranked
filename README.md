@@ -66,7 +66,4 @@ SQLite
     "database"  "umbrella_stats"
 }
 
-<details>
-<summary>Click to expand</summary>
-
 
