@@ -16,7 +16,5 @@
 | **Requirements** | 🧩 Requirements<br><br>MultiColors → https://forums.alliedmods.net/showthread.php?t=247770 |
 | **Database Setup** | 🗄️ Database Setup<br><br>Add "ranked_db" in:<br>`addons/sourcemod/configs/databases.cfg`<br><br>MySQL:<br>`"ranked_db" { "driver" "default" "host" "your-db-host" "database" "your-db-name" "user" "your-user" "pass" "your-password" "port" "3306" }`<br><br>SQLite:<br>`"ranked_db" { "driver" "sqlite" "database" "umbrella_stats" }` |
 | **CVars** | ⚙️ CVars<br><br>sm_rank_min_kills → 1<br>sm_rank_cooldown → 3.0<br>sm_rank_top1_sound → sound path<br>sm_rank_autosave_interval → 120.0 |
-| **Commands** | 💻 Commands<br><br>!rank / /rank → Your stats<br>!top → Top players<br>!toptime → Most active players<br>!topweapons → Weapon rankings |
-| **Changelog** | 🔹 v2.4.2<br><br>• Added CS:S support<br>• Fixed MultiColors crash<br>• Fixed autosave timer<br>• Improved data saving<br>• Improved name sanitization<br>• Removed hardcoded text<br>• General improvements |
-| **Compatibility** | 💾 Compatibility<br><br>No database changes required<br>Fully backward compatible |
+| **Commands** | 💻 Commands<br><br>!rank / /rank → Your stats<br>!top → Top players<br>!toptime → Most active players<br>!topweapons → Weapon rankings | |
 | **Author** | Ayrton09 — SourcePawn / SourceMod (CS:GO / CS:S) |
