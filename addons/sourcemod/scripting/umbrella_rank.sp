@@ -33,7 +33,7 @@ public Plugin myinfo =
     name = "Umbrella Ranked System",
     author = "Ayrton09",
     description = "Ranking System: KDR, Time & Weapons (CS:GO/CS:S)",
-    version = "2.4.4",
+    version = "2.4.6",
     url = ""
 };
 
@@ -51,7 +51,7 @@ public void OnPluginStart()
     LoadTranslations("umbrella_ranked.phrases.txt");
 
     g_cvDbConfig    = CreateConVar("sm_rank_db_connection", "ranked_db", "Name of the connection in databases.cfg.");
-    g_cvMinKills    = CreateConVar("sm_rank_min_kills", "50", "Minimum kills required for a player to be ranked.", _, true, 0.0);
+    g_cvMinKills    = CreateConVar("sm_rank_min_kills", "1", "Minimum kills required for a player to be ranked.", _, true, 0.0);
     g_cvTop1Sound   = CreateConVar("sm_rank_top1_sound", "buttons/bell1.wav", "Sound path for Top #1 join.");
     g_cvRankEnabled = CreateConVar("sm_rank_enabled", "1", "1 = Enabled, 0 = Disabled.", _, true, 0.0, true, 1.0);
     g_cvCooldown    = CreateConVar("sm_rank_cooldown", "3.0", "Seconds to wait between commands.", _, true, 0.0);
@@ -174,15 +174,47 @@ void NormalizeWeaponName(char[] weapon, int maxlen)
         if (StrEqual(weapon, "m4a1_silencer", false))
         {
             strcopy(weapon, maxlen, "M4A1-S");
+            return;
         }
         else if (StrEqual(weapon, "usp_silencer", false))
         {
             strcopy(weapon, maxlen, "USP-S");
+            return;
         }
         else if (StrEqual(weapon, "molotov", false) || StrEqual(weapon, "incgrenade", false))
         {
             strcopy(weapon, maxlen, "Molotov/Inc");
+            return;
         }
+    }
+
+    if (StrEqual(weapon, "hegrenade", false))
+    {
+        strcopy(weapon, maxlen, "HE Grenade");
+    }
+    else if (StrEqual(weapon, "flashbang", false))
+    {
+        strcopy(weapon, maxlen, "Flashbang");
+    }
+    else if (StrEqual(weapon, "smokegrenade", false))
+    {
+        strcopy(weapon, maxlen, "Smoke Grenade");
+    }
+    else if (StrEqual(weapon, "decoy", false))
+    {
+        strcopy(weapon, maxlen, "Decoy");
+    }
+    else if (StrEqual(weapon, "inferno", false))
+    {
+        strcopy(weapon, maxlen, "Fire");
+    }
+    else if (StrEqual(weapon, "world", false))
+    {
+        strcopy(weapon, maxlen, "World");
+    }
+    else if (weapon[0] == '\0')
+    {
+        strcopy(weapon, maxlen, "Unknown");
     }
 }
 
@@ -259,15 +291,49 @@ void SanitizePlayerName(char[] name, int maxlen)
     ReplaceString(name, maxlen, "\t", " ");
 }
 
+void GetTop1SoundPath(char[] sample, int sampleLen, char[] download, int downloadLen)
+{
+    g_cvTop1Sound.GetString(sample, sampleLen);
+    TrimString(sample);
+
+    if (sample[0] == '\0')
+    {
+        download[0] = '\0';
+        return;
+    }
+
+    if (StrContains(sample, "sound/", false) == 0)
+    {
+        strcopy(download, downloadLen, sample);
+
+        int dst = 0;
+        for (int src = 6; sample[src] != '\0' && dst < sampleLen - 1; src++)
+        {
+            sample[dst++] = sample[src];
+        }
+        sample[dst] = '\0';
+        return;
+    }
+
+    Format(download, downloadLen, "sound/%s", sample);
+}
+
 void PrecacheTop1Sound()
 {
-    char s[PLATFORM_MAX_PATH];
-    g_cvTop1Sound.GetString(s, sizeof(s));
+    char sample[PLATFORM_MAX_PATH], download[PLATFORM_MAX_PATH];
+    GetTop1SoundPath(sample, sizeof(sample), download, sizeof(download));
 
-    if (s[0] != '\0')
+    if (sample[0] == '\0')
     {
-        PrecacheSound(s, true);
+        return;
     }
+
+    if (FileExists(download, true))
+    {
+        AddFileToDownloadsTable(download);
+    }
+
+    PrecacheSound(sample, true);
 }
 
 // =============================================================================
@@ -344,14 +410,16 @@ void LoadClientData(int client)
         return;
     }
 
-    char auth[32];
+    char auth[32], escAuth[64];
     if (!GetClientSteam2Safe(client, auth, sizeof(auth)))
     {
         return;
     }
 
+    g_hDatabase.Escape(auth, escAuth, sizeof(escAuth));
+
     char query[256];
-    Format(query, sizeof(query), "SELECT kills, deaths, playtime FROM player_stats WHERE steamid = '%s'", auth);
+    Format(query, sizeof(query), "SELECT kills, deaths, playtime FROM player_stats WHERE steamid = '%s'", escAuth);
     g_hDatabase.Query(SQL_OnDataLoaded, query, GetClientUserId(client));
 }
 
@@ -416,7 +484,7 @@ void SaveAllClientsData(bool force = false)
     {
         if (IsClientConnected(i) && !IsFakeClient(i))
         {
-            SaveClientData(i, force, false);
+            SaveClientData(i, force, true);
         }
     }
 }
@@ -585,16 +653,12 @@ public Action Event_PlayerDeath(Event event, const char[] name, bool dontBroadca
         char weapon[64];
         event.GetString("weapon", weapon, sizeof(weapon));
         SaveWeaponKill(atk, weapon);
-
-        SaveClientData(atk, false, false);
     }
 
     if (vic > 0 && vic <= MaxClients && !IsFakeClient(vic) && g_bDataLoaded[vic])
     {
         g_iDeaths[vic]++;
         g_bSaveDirty[vic] = true;
-
-        SaveClientData(vic, false, false);
     }
 
     return Plugin_Continue;
@@ -628,12 +692,20 @@ public Action Command_Rank(int client, int args)
     }
 
     g_bSaveDirty[client] = true;
-    SaveClientData(client, false, false);
+    SaveClientData(client, true, false);
 
-    char query[512];
+    char auth[32], escAuth[64], query[1024];
+    if (!GetClientSteam2Safe(client, auth, sizeof(auth)))
+    {
+        CPrintToChat(client, "%t", "Data Loading");
+        return Plugin_Handled;
+    }
+
+    g_hDatabase.Escape(auth, escAuth, sizeof(escAuth));
+
     Format(query, sizeof(query),
-        "SELECT steamid FROM player_stats WHERE kills >= %d ORDER BY (kills * 1.0 / CASE WHEN deaths = 0 THEN 1 ELSE deaths END) DESC",
-        g_cvMinKills.IntValue
+        "SELECT CASE WHEN me.kills >= %d THEN 1 + (SELECT COUNT(*) FROM player_stats other WHERE other.kills >= %d AND ((other.kills * 1.0 / CASE WHEN other.deaths = 0 THEN 1 ELSE other.deaths END) > (me.kills * 1.0 / CASE WHEN me.deaths = 0 THEN 1 ELSE me.deaths END) OR ((other.kills * 1.0 / CASE WHEN other.deaths = 0 THEN 1 ELSE other.deaths END) = (me.kills * 1.0 / CASE WHEN me.deaths = 0 THEN 1 ELSE me.deaths END) AND (other.kills > me.kills OR (other.kills = me.kills AND (other.playtime > me.playtime OR (other.playtime = me.playtime AND other.name < me.name))))))) ELSE 0 END AS rank_pos FROM player_stats me WHERE me.steamid = '%s' LIMIT 1",
+        g_cvMinKills.IntValue, g_cvMinKills.IntValue, escAuth
     );
     g_hDatabase.Query(SQL_OnRankPos, query, GetClientUserId(client));
 
@@ -643,32 +715,16 @@ public Action Command_Rank(int client, int args)
 public void SQL_OnRankPos(Database db, DBResultSet results, const char[] error, any data)
 {
     int client = GetClientOfUserId(data);
-    if (client == 0 || !IsClientInGame(client) || results == null)
+    if (client == 0 || !IsClientInGame(client))
     {
         return;
     }
 
-    char auth[32];
-    if (!GetClientSteam2Safe(client, auth, sizeof(auth)))
+    if (error[0] != '\0')
     {
+        LogError("[Umbrella Ranked] Error cargando posición de rank para %N: %s", client, error);
+        CPrintToChat(client, "%t", "Rank Position Error");
         return;
-    }
-
-    int pos = 1;
-    bool found = false;
-
-    while (results.FetchRow())
-    {
-        char sid[32];
-        results.FetchString(0, sid, sizeof(sid));
-
-        if (StrEqual(sid, auth))
-        {
-            found = true;
-            break;
-        }
-
-        pos++;
     }
 
     float kdr = (g_iDeaths[client] > 0) ? float(g_iKills[client]) / float(g_iDeaths[client]) : float(g_iKills[client]);
@@ -676,7 +732,13 @@ public void SQL_OnRankPos(Database db, DBResultSet results, const char[] error, 
     char timeStr[32], buffer[256];
     FormatPlayTime(client, g_iPlayTime[client], timeStr, sizeof(timeStr));
 
-    if (found)
+    int pos = 0;
+    if (results != null && results.FetchRow())
+    {
+        pos = results.FetchInt(0);
+    }
+
+    if (pos > 0)
     {
         Format(buffer, sizeof(buffer), "%T", "Rank Message", client, pos, g_iKills[client], g_iDeaths[client], kdr, timeStr);
     }
@@ -714,7 +776,7 @@ public Action Command_Top(int client, int args)
 
     char query[512];
     Format(query, sizeof(query),
-        "SELECT name, kills, deaths, (kills * 1.0 / CASE WHEN deaths = 0 THEN 1 ELSE deaths END) AS kdr FROM player_stats WHERE kills >= %d ORDER BY kdr DESC LIMIT 50",
+        "SELECT name, kills, deaths, (kills * 1.0 / CASE WHEN deaths = 0 THEN 1 ELSE deaths END) AS kdr FROM player_stats WHERE kills >= %d ORDER BY kdr DESC, kills DESC, playtime DESC, name ASC LIMIT 50",
         g_cvMinKills.IntValue
     );
     g_hDatabase.Query(SQL_OnTop, query, GetClientUserId(client));
@@ -725,7 +787,19 @@ public Action Command_Top(int client, int args)
 public void SQL_OnTop(Database db, DBResultSet results, const char[] error, any data)
 {
     int client = GetClientOfUserId(data);
-    if (client == 0 || !IsClientInGame(client) || results == null)
+    if (client == 0 || !IsClientInGame(client))
+    {
+        return;
+    }
+
+    if (error[0] != '\0')
+    {
+        LogError("[Umbrella Ranked] Error cargando top KDR para %N: %s", client, error);
+        CPrintToChat(client, "%t", "Top Load Error");
+        return;
+    }
+
+    if (results == null)
     {
         return;
     }
@@ -737,9 +811,13 @@ public void SQL_OnTop(Database db, DBResultSet results, const char[] error, any 
     menu.SetTitle(title);
 
     int p = 1;
+    bool hasRows = false;
+    char line[128];
     while (results.FetchRow())
     {
-        char n[64], line[192];
+        hasRows = true;
+
+        char n[64], entry[192];
         results.FetchString(0, n, sizeof(n));
         SanitizePlayerName(n, sizeof(n));
 
@@ -748,15 +826,21 @@ public void SQL_OnTop(Database db, DBResultSet results, const char[] error, any 
 
         if (p == 1)
         {
-            Format(line, sizeof(line), "%T", "Top Line First", client, n, kills, kdr);
+            Format(entry, sizeof(entry), "%T", "Top Line First", client, n, kills, kdr);
         }
         else
         {
-            Format(line, sizeof(line), "%T", "Top Line Rest", client, p, n, kills, kdr);
+            Format(entry, sizeof(entry), "%T", "Top Line Rest", client, p, n, kills, kdr);
         }
 
-        menu.AddItem("x", line, ITEMDRAW_DISABLED);
+        menu.AddItem("x", entry, ITEMDRAW_DISABLED);
         p++;
+    }
+
+    if (!hasRows)
+    {
+        FormatEx(line, sizeof(line), "%T", "No Ranked Players Yet", client);
+        menu.AddItem("empty", line, ITEMDRAW_DISABLED);
     }
 
     menu.Display(client, 30);
@@ -774,26 +858,32 @@ public Action Command_TopTime(int client, int args)
         return Plugin_Handled;
     }
 
-    if (!g_cvRankEnabled.BoolValue)
-    {
-        CPrintToChat(client, "%t", "Rank Disabled");
-        return Plugin_Handled;
-    }
-
     if (g_hDatabase == null || !g_bDataLoaded[client])
     {
         CPrintToChat(client, "%t", "Data Loading");
         return Plugin_Handled;
     }
 
-    g_hDatabase.Query(SQL_OnTopTimeLoaded, "SELECT name, playtime FROM player_stats ORDER BY playtime DESC LIMIT 50", GetClientUserId(client));
+    g_hDatabase.Query(SQL_OnTopTimeLoaded, "SELECT name, playtime FROM player_stats ORDER BY playtime DESC, name ASC LIMIT 50", GetClientUserId(client));
     return Plugin_Handled;
 }
 
 public void SQL_OnTopTimeLoaded(Database db, DBResultSet results, const char[] error, any data)
 {
     int client = GetClientOfUserId(data);
-    if (client == 0 || !IsClientInGame(client) || results == null)
+    if (client == 0 || !IsClientInGame(client))
+    {
+        return;
+    }
+
+    if (error[0] != '\0')
+    {
+        LogError("[Umbrella Ranked] Error cargando top de tiempo para %N: %s", client, error);
+        CPrintToChat(client, "%t", "Top Time Load Error");
+        return;
+    }
+
+    if (results == null)
     {
         return;
     }
@@ -805,9 +895,13 @@ public void SQL_OnTopTimeLoaded(Database db, DBResultSet results, const char[] e
     menu.SetTitle(title);
 
     int p = 1;
+    bool hasRows = false;
+    char line[128];
     while (results.FetchRow())
     {
-        char name[64], line[128], timeStr[32];
+        hasRows = true;
+
+        char name[64], timeStr[32];
         results.FetchString(0, name, sizeof(name));
         SanitizePlayerName(name, sizeof(name));
         FormatPlayTime(client, results.FetchInt(1), timeStr, sizeof(timeStr));
@@ -823,6 +917,12 @@ public void SQL_OnTopTimeLoaded(Database db, DBResultSet results, const char[] e
 
         menu.AddItem("x", line, ITEMDRAW_DISABLED);
         p++;
+    }
+
+    if (!hasRows)
+    {
+        FormatEx(line, sizeof(line), "%T", "No Playtime Yet", client);
+        menu.AddItem("empty", line, ITEMDRAW_DISABLED);
     }
 
     menu.Display(client, 30);
@@ -859,7 +959,19 @@ public Action Command_WeaponMenu(int client, int args)
 public void SQL_OnLoadWeaponMenu(Database db, DBResultSet results, const char[] error, any data)
 {
     int client = GetClientOfUserId(data);
-    if (client == 0 || !IsClientInGame(client) || results == null)
+    if (client == 0 || !IsClientInGame(client))
+    {
+        return;
+    }
+
+    if (error[0] != '\0')
+    {
+        LogError("[Umbrella Ranked] Error cargando menú de armas para %N: %s", client, error);
+        CPrintToChat(client, "%t", "Weapon Menu Load Error");
+        return;
+    }
+
+    if (results == null)
     {
         return;
     }
@@ -870,11 +982,21 @@ public void SQL_OnLoadWeaponMenu(Database db, DBResultSet results, const char[] 
     Format(title, sizeof(title), "%T", "Weapon Menu Title", client);
     menu.SetTitle(title);
 
+    bool hasRows = false;
+    char line[128];
     while (results.FetchRow())
     {
+        hasRows = true;
+
         char w[32];
         results.FetchString(0, w, sizeof(w));
         menu.AddItem(w, w);
+    }
+
+    if (!hasRows)
+    {
+        FormatEx(line, sizeof(line), "%T", "No Weapons Yet", client);
+        menu.AddItem("empty", line, ITEMDRAW_DISABLED);
     }
 
     menu.Display(client, 30);
@@ -894,7 +1016,7 @@ public int MenuHandler_WeaponSelect(Menu menu, MenuAction action, int param1, in
         g_hDatabase.Escape(weapon, escWeapon, sizeof(escWeapon));
 
         Format(query, sizeof(query),
-            "SELECT p.name, w.kills FROM weapon_stats w JOIN player_stats p ON w.steamid = p.steamid WHERE w.weapon = '%s' ORDER BY w.kills DESC LIMIT 50",
+            "SELECT p.name, w.kills FROM weapon_stats w JOIN player_stats p ON w.steamid = p.steamid WHERE w.weapon = '%s' ORDER BY w.kills DESC, p.name ASC LIMIT 50",
             escWeapon
         );
 
@@ -922,7 +1044,19 @@ public void SQL_OnTopWeaponLoaded(Database db, DBResultSet results, const char[]
     pack.ReadString(weapon, sizeof(weapon));
     delete pack;
 
-    if (client == 0 || !IsClientInGame(client) || results == null)
+    if (client == 0 || !IsClientInGame(client))
+    {
+        return;
+    }
+
+    if (error[0] != '\0')
+    {
+        LogError("[Umbrella Ranked] Error cargando top del arma '%s' para %N: %s", weapon, client, error);
+        CPrintToChat(client, "%t", "Weapon Top Load Error");
+        return;
+    }
+
+    if (results == null)
     {
         return;
     }
@@ -934,9 +1068,13 @@ public void SQL_OnTopWeaponLoaded(Database db, DBResultSet results, const char[]
     menu.SetTitle(title);
 
     int p = 1;
+    bool hasRows = false;
+    char line[128];
     while (results.FetchRow())
     {
-        char n[64], line[128];
+        hasRows = true;
+
+        char n[64];
         results.FetchString(0, n, sizeof(n));
         SanitizePlayerName(n, sizeof(n));
 
@@ -952,6 +1090,12 @@ public void SQL_OnTopWeaponLoaded(Database db, DBResultSet results, const char[]
 
         menu.AddItem("x", line, ITEMDRAW_DISABLED);
         p++;
+    }
+
+    if (!hasRows)
+    {
+        FormatEx(line, sizeof(line), "%T", "No Weapon Kills Yet", client);
+        menu.AddItem("empty", line, ITEMDRAW_DISABLED);
     }
 
     menu.ExitBackButton = true;
@@ -985,7 +1129,7 @@ public Action Timer_CheckWelcome(Handle timer, any userid)
 
     char query[512];
     Format(query, sizeof(query),
-        "SELECT steamid FROM player_stats WHERE kills >= %d ORDER BY (kills * 1.0 / CASE WHEN deaths = 0 THEN 1 ELSE deaths END) DESC LIMIT 5",
+        "SELECT steamid FROM player_stats WHERE kills >= %d ORDER BY (kills * 1.0 / CASE WHEN deaths = 0 THEN 1 ELSE deaths END) DESC, kills DESC, playtime DESC, name ASC LIMIT 5",
         g_cvMinKills.IntValue
     );
 
@@ -996,7 +1140,18 @@ public Action Timer_CheckWelcome(Handle timer, any userid)
 public void SQL_OnCheckWelcome(Database db, DBResultSet results, const char[] error, any data)
 {
     int client = GetClientOfUserId(data);
-    if (client == 0 || !IsClientInGame(client) || results == null)
+    if (client == 0 || !IsClientInGame(client))
+    {
+        return;
+    }
+
+    if (error[0] != '\0')
+    {
+        LogError("[Umbrella Ranked] Error comprobando bienvenida top para %N: %s", client, error);
+        return;
+    }
+
+    if (results == null)
     {
         return;
     }
@@ -1035,11 +1190,11 @@ public void SQL_OnCheckWelcome(Database db, DBResultSet results, const char[] er
             Format(buffer, sizeof(buffer), "%T", "Top1 Announce", LANG_SERVER, name);
             CPrintToChatAll(buffer);
 
-            char s[PLATFORM_MAX_PATH];
-            g_cvTop1Sound.GetString(s, sizeof(s));
-            if (s[0] != '\0')
+            char sample[PLATFORM_MAX_PATH], download[PLATFORM_MAX_PATH];
+            GetTop1SoundPath(sample, sizeof(sample), download, sizeof(download));
+            if (sample[0] != '\0')
             {
-                EmitSoundToAll(s);
+                EmitSoundToAll(sample);
             }
         }
         else
