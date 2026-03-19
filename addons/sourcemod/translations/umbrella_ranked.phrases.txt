@@ -170,4 +170,87 @@
         "ru"            "#%d %s -> %d Убийств"
         "chi"           "#%d %s -> %d 击杀"
     }
+
+
+    "Rank Position Error"
+    {
+        "en"            "{red}[Umbrella Ranked]{default} Error loading your rank position."
+        "es"            "{red}[Umbrella Ranked]{default} Error cargando tu posición de rank."
+        "pt"            "{red}[Umbrella Ranked]{default} Erro ao carregar sua posição no rank."
+        "ru"            "{red}[Umbrella Ranked]{default} Ошибка загрузки вашей позиции в рейтинге."
+        "chi"           "{red}[Umbrella Ranked]{default} 加载你的排名位置时出错。"
+    }
+
+    "Top Load Error"
+    {
+        "en"            "{red}[Umbrella Ranked]{default} Error loading the top list."
+        "es"            "{red}[Umbrella Ranked]{default} Error cargando el top."
+        "pt"            "{red}[Umbrella Ranked]{default} Erro ao carregar o top."
+        "ru"            "{red}[Umbrella Ranked]{default} Ошибка загрузки топа."
+        "chi"           "{red}[Umbrella Ranked]{default} 加载排行榜时出错。"
+    }
+
+    "No Ranked Players Yet"
+    {
+        "en"            "No ranked players yet."
+        "es"            "No hay jugadores rankeados todavía."
+        "pt"            "Ainda não há jogadores ranqueados."
+        "ru"            "Пока нет игроков в рейтинге."
+        "chi"           "目前还没有上榜玩家。"
+    }
+
+    "Top Time Load Error"
+    {
+        "en"            "{red}[Umbrella Ranked]{default} Error loading the playtime top list."
+        "es"            "{red}[Umbrella Ranked]{default} Error cargando el top de tiempo."
+        "pt"            "{red}[Umbrella Ranked]{default} Erro ao carregar o top de tempo."
+        "ru"            "{red}[Umbrella Ranked]{default} Ошибка загрузки топа по времени."
+        "chi"           "{red}[Umbrella Ranked]{default} 加载在线时长排行榜时出错。"
+    }
+
+    "No Playtime Yet"
+    {
+        "en"            "No recorded playtime yet."
+        "es"            "No hay tiempos registrados todavía."
+        "pt"            "Ainda não há tempo registrado."
+        "ru"            "Пока нет записанного времени."
+        "chi"           "目前还没有记录的在线时间。"
+    }
+
+    "Weapon Menu Load Error"
+    {
+        "en"            "{red}[Umbrella Ranked]{default} Error loading the weapon menu."
+        "es"            "{red}[Umbrella Ranked]{default} Error cargando el menú de armas."
+        "pt"            "{red}[Umbrella Ranked]{default} Erro ao carregar o menu de armas."
+        "ru"            "{red}[Umbrella Ranked]{default} Ошибка загрузки меню оружия."
+        "chi"           "{red}[Umbrella Ranked]{default} 加载武器菜单时出错。"
+    }
+
+    "No Weapons Yet"
+    {
+        "en"            "No weapons recorded yet."
+        "es"            "No hay armas registradas todavía."
+        "pt"            "Ainda não há armas registradas."
+        "ru"            "Пока нет записанного оружия."
+        "chi"           "目前还没有记录的武器。"
+    }
+
+    "Weapon Top Load Error"
+    {
+        "en"            "{red}[Umbrella Ranked]{default} Error loading the weapon top list."
+        "es"            "{red}[Umbrella Ranked]{default} Error cargando el top del arma."
+        "pt"            "{red}[Umbrella Ranked]{default} Erro ao carregar o top da arma."
+        "ru"            "{red}[Umbrella Ranked]{default} Ошибка загрузки топа оружия."
+        "chi"           "{red}[Umbrella Ranked]{default} 加载武器排行榜时出错。"
+    }
+
+    "No Weapon Kills Yet"
+    {
+        "en"            "No kills recorded with this weapon yet."
+        "es"            "No hay bajas registradas con esta arma todavía."
+        "pt"            "Ainda não há baixas registradas com esta arma."
+        "ru"            "Пока нет убийств с этим оружием."
+        "chi"           "目前还没有这把武器的击杀记录。"
+    }
+
 }
