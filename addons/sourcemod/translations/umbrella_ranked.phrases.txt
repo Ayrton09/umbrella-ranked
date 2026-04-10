@@ -171,7 +171,6 @@
         "chi"           "#%d %s -> %d 击杀"
     }
 
-
     "Rank Position Error"
     {
         "en"            "{red}[Umbrella Ranked]{default} Error loading your rank position."
@@ -251,6 +250,96 @@
         "pt"            "Ainda não há baixas registradas com esta arma."
         "ru"            "Пока нет убийств с этим оружием."
         "chi"           "目前还没有这把武器的击杀记录。"
+    }
+
+    "Reset Rank Disabled"
+    {
+        "en"            "{orange}Rank reset is disabled."
+        "es"            "{orange}El reinicio de rank está desactivado."
+        "pt"            "{orange}A redefinição de rank está desativada."
+        "ru"            "{orange}Сброс ранга отключен."
+        "chi"           "{orange}排名重置已禁用。"
+    }
+
+    "Reset Rank Cooldown"
+    {
+        "en"            "{orange}You can reset your rank again in {green}%d {default}day(s) and {green}%d {default}hour(s)."
+        "es"            "{orange}Podrás reiniciar tu rank otra vez en {green}%d {default}día(s) y {green}%d {default}hora(s)."
+        "pt"            "{orange}Você poderá redefinir seu rank novamente em {green}%d {default}dia(s) e {green}%d {default}hora(s)."
+        "ru"            "{orange}Вы сможете снова сбросить ранг через {green}%d {default}дн. и {green}%d {default}ч."
+        "chi"           "{orange}你可以在 {green}%d {default}天 {green}%d {default}小时后再次重置排名。"
+    }
+
+    "Reset Rank Success"
+    {
+        "en"            "{green}Your rank stats were reset successfully. {default}Playtime was kept."
+        "es"            "{green}Tus stats de rank se reiniciaron correctamente. {default}El tiempo jugado se mantuvo."
+        "pt"            "{green}Suas estatísticas de rank foram redefinidas com sucesso. {default}O tempo jogado foi mantido."
+        "ru"            "{green}Ваши ранговые показатели были успешно сброшены. {default}Игровое время сохранено."
+        "chi"           "{green}你的排名数据已成功重置。{default}在线时长已保留。"
+    }
+
+    "Reset Rank Error"
+    {
+        "en"            "{red}[Umbrella Ranked]{default} Error resetting your weapon stats."
+        "es"            "{red}[Umbrella Ranked]{default} Error reiniciando tus estadísticas de armas."
+        "pt"            "{red}[Umbrella Ranked]{default} Erro ao redefinir suas estatísticas de armas."
+        "ru"            "{red}[Umbrella Ranked]{default} Ошибка сброса вашей оружейной статистики."
+        "chi"           "{red}[Umbrella Ranked]{default} 重置你的武器统计时出错。"
+    }
+
+    "Reset Rank In Progress"
+    {
+        "en"            "{orange}Your rank reset is already being processed."
+        "es"            "{orange}Tu reinicio de rank ya se está procesando."
+        "pt"            "{orange}Sua redefinição de rank já está sendo processada."
+        "ru"            "{orange}Сброс вашего ранга уже обрабатывается."
+        "chi"           "{orange}你的排名重置已在处理中。"
+    }
+
+    "Reset Rank Confirm Title"
+    {
+        "en"            "Reset your rank stats?\nPlaytime will be kept."
+        "es"            "¿Reiniciar tus stats de rank?\nEl tiempo jugado se mantendrá."
+        "pt"            "Redefinir suas estatísticas de rank?\nO tempo jogado será mantido."
+        "ru"            "Сбросить ваши ранговые показатели?\nИгровое время будет сохранено."
+        "chi"           "要重置你的排名数据吗？\n在线时长将被保留。"
+    }
+
+    "Reset Rank Confirm Yes"
+    {
+        "en"            "Confirm"
+        "es"            "Confirmar"
+        "pt"            "Confirmar"
+        "ru"            "Подтвердить"
+        "chi"           "确认"
+    }
+
+    "Reset Rank Confirm No"
+    {
+        "en"            "Cancel"
+        "es"            "Cancelar"
+        "pt"            "Cancelar"
+        "ru"            "Отмена"
+        "chi"           "取消"
+    }
+
+    "Prune Data Loading"
+    {
+        "en"            "{orange}The ranking database is not ready yet."
+        "es"            "{orange}La base de datos del rank todavía no está lista."
+        "pt"            "{orange}O banco de dados do rank ainda não está pronto."
+        "ru"            "{orange}База данных ранга еще не готова."
+        "chi"           "{orange}排名数据库尚未准备好。"
+    }
+
+    "Prune Started"
+    {
+        "en"            "{green}Inactive rank prune started."
+        "es"            "{green}Se inició la limpieza de ranks inactivos."
+        "pt"            "{green}A limpeza de ranks inativos foi iniciada."
+        "ru"            "{green}Очистка неактивных рангов запущена."
+        "chi"           "{green}已开始清理不活跃排名数据。"
     }
 
 }
