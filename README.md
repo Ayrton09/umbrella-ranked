@@ -1,6 +1,6 @@
 # ☂️ Umbrella Ranked System (CS:GO / CS:S)
 
-![Version](https://img.shields.io/badge/version-2.4.4-blue)
+![Version](https://img.shields.io/badge/version-2.6.0-blue)
 ![Game](https://img.shields.io/badge/game-CS%3AGO%20%2F%20CS%3AS-orange)
 ![Platform](https://img.shields.io/badge/platform-SourceMod-green)
 ![Language](https://img.shields.io/badge/languages-EN%20ES%20PT%20RU%20CH-purple)
@@ -98,7 +98,8 @@ addons/sourcemod/configs/databases.cfg
 - !rank → Your stats  
 - !top → Top players  
 - !toptime → Most active players  
-- !topweapons → Weapon rankings  
+- !topweapons → Weapon rankings
+- !resetrank / !rrank → Reset your kdr and weapons stats (no the toptime)
 
 </details>
 
