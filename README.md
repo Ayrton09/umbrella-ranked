@@ -104,8 +104,3 @@ addons/sourcemod/configs/databases.cfg
 </details>
 
 ---
-
-## 👤 Author
-
-Ayrton09  
-SourcePawn / SourceMod (CS:GO / CS:S)
