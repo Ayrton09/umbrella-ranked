@@ -2,6 +2,14 @@
 
 All notable changes to Umbrella Ranked System are documented in this file.
 
+## [1.4.1]
+
+### Added
+- `sm_rank_bare_triggers` ConVar (default `1`): chat words like `rank` or `top` open the stats without an `!`/`/` prefix. Set to `0` to require a prefix.
+
+### Changed
+- Chat triggers respond to plain words again by default (e.g. `top`, `rank`), now toggleable via the ConVar above. The `!` and `/` prefixes always work.
+
 ## [1.4.0]
 
 ### Added
