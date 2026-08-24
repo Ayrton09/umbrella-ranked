@@ -2,6 +2,24 @@
 
 All notable changes to Umbrella Ranked System are documented in this file.
 
+## [1.5.0]
+
+### Fixed
+- The database connection is retried every 30 seconds if it fails at startup, instead of leaving the plugin without a database until the next reload.
+- Failed player data loads are retried (up to 3 times, 5 seconds apart), instead of leaving the player unranked and unsaved for the whole session.
+- Saves and weapon stat flushes are blocked while a rank reset is in progress. Previously `!rank` could force a save mid-reset and the reset could be silently skipped in the database while weapon stats were already deleted.
+- Weapon stat batches are no longer retried after a query error. The additive upsert is not idempotent, so a retry could double-count kills when the database reported an error for a query that was actually applied. A failed batch now loses at most the kills accumulated since the previous flush and is logged.
+- Weapon kills accumulated while a previous flush was still in flight are no longer lost when the player disconnects.
+- Players already connected when the plugin loads get their session data initialized (`!session` showed a playtime measured from 1970).
+- The top-5 welcome announcement can no longer fire twice for the same player when two data loads race during connect.
+- SQLite index creation uses `CREATE INDEX IF NOT EXISTS` instead of relying on matching the error message text.
+
+### Changed
+- Rank commands used from the server console print an "in-game only" notice instead of doing nothing.
+- The periodic autosave force-saves players directly instead of artificially marking them dirty first.
+- The five rank commands share one precondition gate (in-game check, cooldown, availability, data loaded) instead of five hand-maintained copies.
+- Removed the dirty-flag save bookkeeping: every save path already forces a write, so the flag no longer influenced behavior.
+
 ## [1.4.1]
 
 ### Added
