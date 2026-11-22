@@ -1,3 +1,6 @@
+#pragma semicolon 1
+#pragma newdecls required
+
 #include <sourcemod>
 #include <sdktools>
 #include <multicolors>
@@ -89,7 +92,7 @@ public Plugin myinfo =
     name = "Umbrella Ranked System",
     author = "Ayrton09",
     description = "Ranking System: Points, KDR, Time & Weapons (CS:GO/CS:S)",
-    version = "1.5.0",
+    version = "1.6.0",
     url = ""
 };
 

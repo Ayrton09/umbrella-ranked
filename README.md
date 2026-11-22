@@ -1,6 +1,6 @@
 # Umbrella Ranked System
 
-![Version](https://img.shields.io/badge/version-1.5.0-blue)
+![Version](https://img.shields.io/badge/version-1.6.0-blue)
 ![Game](https://img.shields.io/badge/game-CS%3AGO%20%2F%20CS%3AS-orange)
 ![Platform](https://img.shields.io/badge/platform-SourceMod-green)
 ![Author](https://img.shields.io/badge/author-Ayrton09-purple)

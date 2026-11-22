@@ -6,7 +6,32 @@ tools/
 Thumbs.db
 desktop.ini
 
-# Editors / IDEs
+# Editors / IDEs / assistants
 .vscode/
 .idea/
+.vs/
+.claude/
 *.swp
+
+# Secrets: keys, certificates, env files, credentials
+*.pem
+*.key
+*.pfx
+*.p12
+*.ppk
+id_rsa*
+id_ed25519*
+.env
+.env.*
+!.env.example
+databases.cfg
+
+# Local databases, logs and backups written by a test server
+*.db
+*.sq3
+*.sqlite
+*.sqlite3
+*.db-journal
+*.sqlite-journal
+*.log
+*.bak

@@ -2,6 +2,13 @@
 
 All notable changes to Umbrella Ranked System are documented in this file.
 
+## [1.6.0]
+
+### Changed
+- Updated the bundled MoreColors include to 3.0.1-MC (Multi-Colors upstream), which compiles on SourceMod 1.13. Chat colors behave exactly as before.
+- The plugin source now enforces `#pragma semicolon 1` and `#pragma newdecls required`.
+- Built with SourceMod 1.12.0 build 7260.
+
 ## [1.5.0]
 
 ### Fixed
